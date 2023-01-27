@@ -67,10 +67,23 @@
     "@dcloudio/uni-quickapp-webview": "^2.0.2-3061820230117002",
     "@dcloudio/uni-stacktracey": "^2.0.2-3061820230117002",
     "@dcloudio/uni-stat": "^2.0.2-3061820230117002",
+    "@dcloudio/uni-ui": "^1.4.24",
     "@vue/shared": "^3.0.0",
     "core-js": "^3.8.3",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
     "flyio": "^0.6.2",
+    "postcss": "^8.4.21",
+    "postcss-html": "^1.5.0",
+    "postcss-scss": "^4.0.6",
+    "stylelint": "^14.16.1",
+    "stylelint-config-html": "^1.1.0",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "stylelint-order": "^6.0.1",
+    "stylelint-scss": "^4.3.0",
     "vue": ">= 2.6.14 < 2.7",
+    "vue-eslint-parser": "^9.1.0",
     "vuex": "^3.2.0"
   },
   "devDependencies": {
@@ -94,6 +107,8 @@
     "mini-types": "*",
     "miniprogram-api-typings": "*",
     "postcss-comment": "^2.0.0",
+    "sass": "^1.57.1",
+    "sass-loader": "^10.1.1",
     "vue-template-compiler": ">= 2.6.14 < 2.7"
   },
   "browserslist": [
