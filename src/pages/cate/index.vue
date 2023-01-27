@@ -47,7 +47,7 @@ export default {
       this.cateLevel2 = res.message[0].children
       this.cateLevel2.forEach(item => {
         item.children.forEach(_item => {
-          _item.cat_icon = '../../static/miku.jpg'
+          _item.cat_icon = '../../static/mio.jpg'
         })
       })
     },
@@ -57,7 +57,7 @@ export default {
       // 为二级分类列表重新赋值
       this.cateList[index].children.forEach(item => {
         item.children.forEach(_item => {
-          _item.cat_icon = '../../static/miku.jpg'
+          _item.cat_icon = '../../static/mio.jpg'
         })
       })
       this.cateLevel2 = this.cateList[index].children
@@ -65,15 +65,11 @@ export default {
     },
     // 点击三级分类项跳转到商品列表页面
     gotoGoodsList(value) {
-      uni.navigateTo({
-        url: '/sub-package/goods-list/index?cid=' + value.cat_id
-      })
+      uni.navigateTo({ url: '/sub-package/goods-list/index?cid=' + value.cat_id })
     },
     // 点击搜索组件
     search() {
-      uni.navigateTo({
-        url: '/sub-package/search/index'
-      })
+      uni.navigateTo({ url: '/sub-package/search/index' })
     }
   },
   onLoad() {

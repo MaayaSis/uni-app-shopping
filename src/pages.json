@@ -1,91 +1,97 @@
 {
-	"pages": [
-		{
-			"path": "pages/home/index",
-			"style": {
-				"navigationBarTitleText": "home"
-			}
-		},
-		{
-			"path": "pages/cate/index",
-			"style": {
-				"navigationBarTitleText": "cate"
-			}
-		},
-		{
-			"path": "pages/cart/index",
-			"style": {
-				"navigationBarTitleText": "cart"
-			}
-		},
-		{
-			"path": "pages/my/index",
-			"style": {
-				"navigationBarTitleText": "my"
-			}
-		}
-	],
-	"tabBar": {
-		"selectedColor": "#C00000",
-		"color": "#000",
-		"backgroundColor": "#eee",
-		"list": [
-			{
-				"pagePath": "pages/home/index",
-				"text": "首页",
-				"iconPath": "static/tab_icons/home.png",
-				"selectedIconPath": "static/tab_icons/home-active.png"
-			},
-			{
-				"pagePath": "pages/cate/index",
-				"text": "分类",
-				"iconPath": "static/tab_icons/home.png",
-				"selectedIconPath": "static/tab_icons/home-active.png"
-			},
-			{
-				"pagePath": "pages/cart/index",
-				"text": "购物车",
-				"iconPath": "static/tab_icons/home.png",
-				"selectedIconPath": "static/tab_icons/home-active.png"
-			},
-			{
-				"pagePath": "pages/my/index",
-				"text": "我的",
-				"iconPath": "static/tab_icons/home.png",
-				"selectedIconPath": "static/tab_icons/home-active.png"
-			}
-		]
-	},
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	},
-	"lazyCodeLoading": "requiredComponents",
-	"subPackages": [
-		{
-			"root": "sub-package",
-			"pages": [
-				{
-					"path": "goods-detail/index",
-					"style": {
-						"navigationBarTitleText": "goods-detail"
-					}
-				},
-				{
-					"path": "goods-list/index",
-					"style": {
-						"navigationBarTitleText": "goods-list"
-					}
-				},
-				{
-					"path": "search/index",
-					"style": {
-						"navigationBarTitleText": "search"
-					}
-				}
-			]
-		}
-	]
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+    }
+  },
+  "pages": [
+    {
+      "path": "pages/home/index",
+      "style": {
+        "navigationBarTitleText": "home"
+      }
+    },
+    {
+      "path": "pages/cate/index",
+      "style": {
+        "navigationBarTitleText": "cate"
+      }
+    },
+    {
+      "path": "pages/cart/index",
+      "style": {
+        "navigationBarTitleText": "cart"
+      }
+    },
+    {
+      "path": "pages/my/index",
+      "style": {
+        "navigationBarTitleText": "my"
+      }
+    }
+  ],
+  "tabBar": {
+    "selectedColor": "#C00000",
+    "color": "#000",
+    "backgroundColor": "#eee",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconPath": "static/tab_icons/home.png",
+        "selectedIconPath": "static/tab_icons/home-active.png"
+      },
+      {
+        "pagePath": "pages/cate/index",
+        "text": "分类",
+        "iconPath": "static/tab_icons/home.png",
+        "selectedIconPath": "static/tab_icons/home-active.png"
+      },
+      {
+        "pagePath": "pages/cart/index",
+        "text": "购物车",
+        "iconPath": "static/tab_icons/home.png",
+        "selectedIconPath": "static/tab_icons/home-active.png"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的",
+        "iconPath": "static/tab_icons/home.png",
+        "selectedIconPath": "static/tab_icons/home-active.png"
+      }
+    ]
+  },
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "subPackages": [
+    {
+      "root": "sub-package",
+      "pages": [
+        {
+          "path": "goods-detail/index",
+          "style": {
+            "navigationBarTitleText": "goods-detail"
+          }
+        },
+        {
+          "path": "goods-list/index",
+          "style": {
+            "navigationBarTitleText": "goods-list"
+          }
+        },
+        {
+          "path": "search/index",
+          "style": {
+            "navigationBarTitleText": "search"
+          }
+        }
+      ]
+    }
+  ]
 }
