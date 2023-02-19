@@ -53,8 +53,6 @@ export default {
       floorList: [] // 楼层数据
     }
   },
-  computed: {},
-  watch: {},
   methods: {
     // 获取轮播图数据
     async getSwiperList() {
@@ -90,7 +88,6 @@ export default {
       }
     }
   },
-
   // 页面周期函数--监听页面加载D
   onLoad() {
     this.getSwiperList()

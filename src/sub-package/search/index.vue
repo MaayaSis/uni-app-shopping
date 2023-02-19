@@ -51,7 +51,6 @@ export default {
         this.keyWordList = []
         return
       }
-      console.log(this.keyWord)
       const { data: res } = await uni.$api.get('/api/public/v1/goods/qsearch', { query: this.keyWord })
       if (res.meta.status !== 200) return uni.$showMsg()
       this.keyWordList = res.message
