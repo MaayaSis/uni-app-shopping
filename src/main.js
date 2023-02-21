@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import * as utils from '@/utils'
 import $api from '@/utils/request'
+import store from '@/store/index'
 
 // 将utils中的方法挂载到全局中
 Object.keys(utils).forEach(key => {
@@ -27,6 +28,7 @@ Vue.config.productionTip = false // 开发者工具
 
 App.mpType = 'app'
 const app = new Vue({
-  ...App
+  ...App,
+  store // 挂载vuex实例
 })
 app.$mount()
