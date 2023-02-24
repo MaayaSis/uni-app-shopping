@@ -1,7 +1,7 @@
 import { mapGetters } from 'vuex'
 
 export default { // 暴露一个mixin对象
-  computed: { ...mapGetters('m_cart', ['total']) },
+  computed: { ...mapGetters('cart', ['total']) },
   onShow() {
     this.setBadge() // 在页面刚展示的时候，设置数字徽标
   },

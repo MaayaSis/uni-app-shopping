@@ -17,8 +17,25 @@ export default {
       }
       this.commit('cart/saveToStorage')
     },
+    // 更新商品购物车
+    updateRadioStatus(state, goods) {
+      const res = state.cart.find(item => item.goods_id === goods.goods_id)
+      if (res) res.goods_state = goods.goods_state
+      this.commit('cart/saveToStorage')
+    },
+    // / 更新商品购物车
+    updateGoodsCount(state, goods) {
+      const res = state.cart.find(item => item.goods_id === goods.goods_id)
+      if (res) res.goods_count = goods.goods_count
+      this.commit('cart/saveToStorage')
+    },
+    // 删除购物车中的商品
+    removeGoods(state, goods) {
+      state.cart = state.cart.filter(item => item.goods_id !== goods.goods_id)
+      this.commit('cart/saveToStorage')
+    },
     // 持久化存储
-    saveToStorge(state) {
+    saveToStorage(state) {
       uni.setStorageSync('cart', JSON.stringify(state.cart))
     }
   },
