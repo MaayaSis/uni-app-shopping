@@ -17,13 +17,13 @@ export default {
       }
       this.commit('cart/saveToStorage')
     },
-    // 更新商品购物车
+    // 更新商品的状态
     updateRadioStatus(state, goods) {
       const res = state.cart.find(item => item.goods_id === goods.goods_id)
       if (res) res.goods_state = goods.goods_state
       this.commit('cart/saveToStorage')
     },
-    // / 更新商品购物车
+    // / 更新商品数量
     updateGoodsCount(state, goods) {
       const res = state.cart.find(item => item.goods_id === goods.goods_id)
       if (res) res.goods_count = goods.goods_count
@@ -34,6 +34,11 @@ export default {
       state.cart = state.cart.filter(item => item.goods_id !== goods.goods_id)
       this.commit('cart/saveToStorage')
     },
+    // 全选/全不选所有商品
+    updateAllGoodsState(state, allState) {
+      console.log(allState)
+      state.cart.forEach(item => { item.goods_state = allState })
+    },
     // 持久化存储
     saveToStorage(state) {
       uni.setStorageSync('cart', JSON.stringify(state.cart))
@@ -41,10 +46,20 @@ export default {
   },
   // 模块的 getters 属性
   getters: {
+    // 购物车中的商品总数量
     total(state) {
       let res = 0
       state.cart.forEach(item => { res += item.goods_count })
       return res
+    },
+    // 当前被勾选的商品的总数量
+    checkedCount(state) {
+      console.log(state.cart.filter(item => item.goods_state))
+      return state.cart.filter(item => item.goods_state).reduce((total, item) => total + item.goods_count, 0)
+    },
+    // 已勾选商品的总价格
+    checkedGoodsAmount(state) {
+      return state.cart.filter(item => item.goods_state).reduce((total, item) => total + (item.goods_count * item.goods_price), 0).toFixed(2)
     }
   }
 }

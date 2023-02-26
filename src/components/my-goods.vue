@@ -56,7 +56,7 @@ export default {
     handlerNum(val) {
       this.$emit('handlerNumChange', {
         goods_id: this.goods.goods_id,
-        goods_state: +val
+        goods_count: val
       })
     }
   }

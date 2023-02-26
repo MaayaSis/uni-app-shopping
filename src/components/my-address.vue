@@ -6,8 +6,7 @@
     </view>
 
     <!-- 渲染收货信息的盒子 -->
-    <!-- 渲染收货信息的盒子 -->
-    <view v-else class="address-info-box">
+    <view v-else class="address-info-box" @click="handlerAddress">
       <view class="row1">
         <view class="row1-left">
           <view class="username">收货人：<text>{{ address.userName }}</text></view>
@@ -29,30 +28,24 @@
 </template>
 
 <script>
+import { mapMutations, mapState, mapGetters } from 'vuex'
 export default {
-  data() {
-    return {
-      address: {} // 收货地址
-    }
-  },
   computed: {
-  // 收货详细地址的计算属性
-    addstr() {
-      if (!this.address.provinceName) return ''
-      // 拼接 省，市，区，详细地址 的字符串并返回给用户
-      return this.address.provinceName + this.address.cityName + this.address.countyName + this.address.detailInfo
-    }
+    ...mapState('user', ['address']),
+    // 收货详细地址的计算属性
+    ...mapGetters('user', ['addstr'])
   },
   methods: {
-  // 选择收货地址
+    ...mapMutations('user', ['updateAddress']),
+    // 选择收货地址
     async handlerAddress() {
     //  1.调用小程序提供的 chooseAddress() 方法，即可使用选择收货地址的功能
     //  返回值是一个数组：第 1 项为错误对象；第 2 项为成功之后的收货地址对象
-      const [err, succ] = await uni.chooseAddress().catch(err => err)
+      const [err, succ] = await uni.chooseAddress().catch(err => console.log(err))
       // 2. 用户成功的选择了收货地址
       if (err === null && succ.errMsg === 'chooseAddress:ok') {
       // 为 data 里面的收货地址对象赋值
-        this.address = succ
+        this.updateAddress(succ)
       }
     }
   }

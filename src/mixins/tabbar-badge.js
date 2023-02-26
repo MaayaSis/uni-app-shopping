@@ -5,6 +5,11 @@ export default { // 暴露一个mixin对象
   onShow() {
     this.setBadge() // 在页面刚展示的时候，设置数字徽标
   },
+  watch: {
+    total() {
+      this.setBadge()
+    }
+  },
   methods: {
     setBadge() {
       // 调用 uni.setTabBarBadge() 方法，为购物车设置右上角的徽标

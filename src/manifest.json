@@ -52,7 +52,10 @@
       "urlCheck": false,
       "checkSiteMap": false
     },
-    "usingComponents": true
+    "usingComponents": true,
+    "requiredPrivateInfos": [
+      "chooseAddress"
+    ]
   },
   "mp-alipay": {
     "usingComponents": true
