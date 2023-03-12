@@ -41,12 +41,11 @@ export default {
     async handlerAddress() {
     //  1.调用小程序提供的 chooseAddress() 方法，即可使用选择收货地址的功能
     //  返回值是一个数组：第 1 项为错误对象；第 2 项为成功之后的收货地址对象
-      const [err, succ] = await uni.chooseAddress().catch(err => console.log(err))
-      // 2. 用户成功的选择了收货地址
-      if (err === null && succ.errMsg === 'chooseAddress:ok') {
-      // 为 data 里面的收货地址对象赋值
-        this.updateAddress(succ)
-      }
+      await uni.chooseAddress({
+        success: res => this.updateAddress(res),
+        fail: res => console.log('失败', res),
+        complete: res => console.log('完成', res)
+      })
     }
   }
 }

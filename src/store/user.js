@@ -3,7 +3,10 @@ export default {
 
   // state 数据
   state: () => ({
-    address: JSON.parse(uni.getStorageSync('address') || '{}') // 收货地址
+    token: uni.getStorageSync('token') || '', // 用户的 token
+    address: JSON.parse(uni.getStorageSync('address') || '{}'), // 收货地址
+    userinfo: JSON.parse(uni.getStorageSync('userinfo') || '{}'), // 用户的基本信息
+    redirectUrl: null // 重定向的 object 对象 { openType, from }
   }),
 
   // 方法
@@ -11,12 +14,40 @@ export default {
     // 更新收货地址
     updateAddress(state, address) {
       state.address = address
-      // 2. 通过 this.commit() 方法，调用 m_user 模块下的 saveAddressToStorage 方法将 address 对象持久化存储到本地
-      this.commit('user/saveAddressToStorage')
+      this.commit('user/saveAddressToStorage') // address 对象持久化存储到本地
     },
-    // 1. 定义将 address 持久化存储到本地 mutations 方法
+
+    // 更新用户的基本信息
+    updateUserInfo(state, userInfo) {
+      state.userinfo = userInfo
+      this.commit('user/saveUserInfoToStorage') // userinfo 对象持久化存储到本地
+    },
+
+    // 更新 token 字符串
+    updateToken(state, token) {
+      state.token = token
+      this.commit('user/saveTokenToStorage') // token 字符串持久化存储到本地
+      uni.$showMsg('登录成功')
+    },
+
+    // 更新重定向的url
+    updateRedirectUrl(state, url) {
+      state.redirectUrl = url
+    },
+
+    // address 持久化存储到本地
     saveAddressToStorage(state) {
       uni.setStorageSync('address', JSON.stringify(state.address))
+    },
+
+    // userinfo 持久化存储到本地
+    saveUserInfoToStorage(state) {
+      uni.setStorageSync('userinfo', JSON.stringify(state.userinfo))
+    },
+
+    // token 字符串持久化存储到本地
+    saveTokenToStorage(state) {
+      uni.setStorageSync('token', state.token)
     }
   },
 

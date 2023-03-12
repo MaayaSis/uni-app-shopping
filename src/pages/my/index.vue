@@ -1,38 +1,36 @@
 <template>
-  <div class="my">my</div>
+  <view class="my-container">
+    <!-- 用户未登录时，显示登录组件 -->
+    <my-login v-if="!token" />
+
+    <!-- 用户登录后，显示用户信息组件 -->
+    <my-user-info v-else />
+  </view>
 </template>
 
 <script>
+import badgeMix from '@/mixins/tabbar-badge.js'
+import MyLogin from '@/components/my-login'
+import MyUserInfo from '@/components/my-userInfo'
+import { mapState } from 'vuex'
 export default {
   name: 'My',
-  components: {},
+  components: { MyLogin, MyUserInfo },
+  mixins: [badgeMix],
   props: {},
   data() {
     return {}
   },
-  computed: {},
+  computed: {
+    ...mapState('user', ['token'])
+  },
   watch: {},
-  methods: {},
-
-  // 页面周期函数--监听页面加载
-  onLoad() {},
-  // 页面周期函数--监听页面初次渲染完成
-  onReady() {},
-  // 页面周期函数--监听页面显示(not-nvue)
-  onShow() {},
-  // 页面周期函数--监听页面隐藏
-  onHide() {},
-  // 页面周期函数--监听页面卸载
-  onUnload() {}
-  // 页面处理函数--监听用户下拉动作
-  // onPullDownRefresh() { uni.stopPullDownRefresh(); },
-  // 页面处理函数--监听用户上拉触底
-  // onReachBottom() {},
-  // 页面处理函数--监听页面滚动(not-nvue)
-  // onPageScroll(event) {},
-  // 页面处理函数--用户点击右上角分享
-  // onShareAppMessage(options) {},
+  methods: {}
 }
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.my-container {
+  height: 100%;
+}
+</style>

@@ -30,6 +30,8 @@ export class Request {
     // 发起请求
     return new Promise((resolve, reject) => {
       const weixin = typeof uni !== 'undefined' ? uni : wx
+      let api = this.url.split('/')
+      api = api[api.length - 1]
       weixin.request({
         data,
         method,
@@ -37,7 +39,7 @@ export class Request {
         header: this.header,
         success: res => resolve(res), // 成功
         fail: err => reject(err), // 失败
-        complete: res => this.afterRequest && typeof this.afterRequest === 'function' && this.afterRequest(res) // 执行响应拦截
+        complete: res => this.afterRequest && typeof this.afterRequest === 'function' && this.afterRequest(api, res) // 执行响应拦截
       })
     })
   }
